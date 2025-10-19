@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
-const User = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     firstName: {type: String, required: [true, 'Please Enter Your First Name'], trim: true},
     lastName: {type: String, required: [true, 'Please Enter Your Last Name'], trim: true},
     Email: {
@@ -19,7 +19,7 @@ const User = new mongoose.Schema({
 //Encrypts/Hashes Passwords before saving them in database in sign-in
 //after signing-in it hashes the passwords and adds unique characters to maximize security
 //using salt in a cost factor of 2^12 = 4,096 rounds of hashing
-User.pre('save', async function(next){
+userSchema.pre('save', async function(next){
     if(!User.siModified(Password)){
         next();
 }
@@ -29,10 +29,11 @@ this.Password = await bcrypt.hash(this.Password,salt);
 });
 
 //method used to match user entered password to hashed password in login
-User.methods.matchPassword = async function(enteredPass){
+userSchema.methods.matchPassword = async function(enteredPass){
     return await bcrypt.compare(enteredPass, this.Password);
 };
 
+module.exports = mongoose.model('User', userSchema);
 
 //In User schema the match type I added from chatGPT for more valid and secure sign-in
 // trim is used to delet spaces before and after input for database efficiency
