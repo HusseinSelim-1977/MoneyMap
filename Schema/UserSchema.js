@@ -20,7 +20,7 @@ const userSchema = new Schema({
 //after signing-in it hashes the passwords and adds unique characters to maximize security
 //using salt in a cost factor of 2^12 = 4,096 rounds of hashing
 userSchema.pre('save', async function(next){
-    if(!User.isModified(Password)){
+    if(!this.isModified(Password)){
         next();
 }
 
