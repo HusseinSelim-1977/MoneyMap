@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 16 16% 10%;
+  --foreground: 0 0% 100%;
+
+  --card: 0 0% 12%;
+  --card-foreground: 0 0% 100%;
+
+  --muted: 240 4.8% 16%;
+  --muted-foreground: 240 5% 65%;
+
+  --primary: 228 100% 61%;
+  --primary-foreground: 0 0% 100%;
+
+  --ring: 228 100% 61%;
+}
+
+html, body, #root { height: 100%; }
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+.card {
+  background-color: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+  border-radius: 1rem; /* 2xl */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.75rem; /* xl */
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  transition: filter 150ms ease-in-out, background-color 150ms ease-in-out;
+}
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
+.btn-primary:hover { filter: brightness(1.1); }
+
+.input {
+  width: 100%;
+  border-radius: 0.5rem; /* lg */
+  border: 1px solid rgba(255,255,255,0.1);
+  background-color: rgba(0,0,0,0.2);
+  padding: 0.5rem 0.75rem;
+  outline: none;
+}
+.input:focus {
+  border-color: hsl(var(--ring));
+}
+
+.label {
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+}
