@@ -1,5 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { MoneyMapControllerController } from './money-map-controller.controller';
+import { MoneyMapServiceService } from '../money-map-service/money-map-service.service';
 
 describe('MoneyMapControllerController', () => {
   let controller: MoneyMapControllerController;
