@@ -1,7 +1,7 @@
 "use client"
 
-import { Card } from "@/components/ui/card"
-import type { InvestmentCategory } from "@/context/money-map-context"
+import { Card } from "./card"
+import type { InvestmentCategory } from "../SCHEMA/Schema/schema.js"
 
 interface InvestmentRecommendationProps {
   leftover: number
